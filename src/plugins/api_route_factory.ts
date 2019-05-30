@@ -26,7 +26,7 @@ class ApiRouteFactory {
   async buildRoute (app, routePath, apiPath) {
     const filesAndDirs = FileUtil.getFilesAndDirs(routePath)
     for (const file of filesAndDirs.files) {
-      if (!file.endsWith(`.js`)) {
+      if (!file.endsWith(`.js`) && !file.endsWith(`.ts`)) {
         continue
       }
       const name = path.basename(file, '.js')
