@@ -1,6 +1,6 @@
 {
   "name": "@pefish/js-helper-httpserver",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "types": "./types/*.d.ts",
   "main": "./lib/http_server.js",
   "scripts": {
