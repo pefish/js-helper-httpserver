@@ -1,4 +1,4 @@
-import AssertUtil from '@pefish/js-helper-assert'
+import AssertUtil from '@pefish/js-util-assert'
 
 export default class DecoratorUtil {
 

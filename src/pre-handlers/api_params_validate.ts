@@ -1,7 +1,7 @@
 /** @module */
 
 import RequestUtil from '../utils/request'
-import AssertUtil from '@pefish/js-helper-assert'
+import AssertUtil from '@pefish/js-util-assert'
 import ErrorHelper from '@pefish/js-error'
 
 /**
