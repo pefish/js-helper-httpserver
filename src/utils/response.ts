@@ -1,32 +1,38 @@
 import fs from 'fs'
 import path from 'path'
 
+type ApiResult = {
+	msg: string,
+	code: number,
+	data: any,
+}
+
 /**
  * api回复的工具类
  */
 export default class ResponseUtil {
-  static success (res, data) {
+  static success (res, data: any): void {
     res.json(ResponseUtil.assembleSucceedRes(data))
   }
 
-  static assembleSucceedRes (data) {
+  static assembleSucceedRes (data: any): ApiResult {
     return {
-      succeed: true,
+      code: 0,
+      msg: ``,
       data
     }
   }
 
-  static failed (res, err) {
+  static failed (res, err): void {
     global.logger.error(err)
     res.json(ResponseUtil.assembleFailResp(err))
   }
 
-  static assembleFailResp (err) {
-    const errorCode = err instanceof Error ? err.getErrorCode_() : 0
+  static assembleFailResp (err): ApiResult {
+    const errorCode = err instanceof Error ? err.getErrorCode_() : 1
     return {
-      succeed: false,
-      error_message: (global['debug'] === false || err.getErrorMessage_() === undefined) ? 'INTERNAL_ERROR' : err.getErrorMessage_(),
-      error_code: errorCode,
+      msg: (global['debug'] === false || err.getErrorMessage_() === undefined) ? 'INTERNAL_ERROR' : err.getErrorMessage_(),
+      code: errorCode,
       data: (err instanceof Error ? err.getErrorStorage_() : null)
     }
   }
