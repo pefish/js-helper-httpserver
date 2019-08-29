@@ -9,6 +9,8 @@ import bodyParser from 'body-parser'
 import apiRouteFactory from './plugins/api_route_factory'
 import ResponseUtil from './utils/response'
 import ErrorHelper from '@pefish/js-error'
+import { Server } from 'http';
+import { AddressInfo } from 'net';
 
 
 declare global {
@@ -24,28 +26,28 @@ declare global {
  */
 class HttpServerHelper {
 
-  _host: string
-  _port: number
-  app: any
-  _server: any
+  private host: string
+  private port: number
+  private app: any
+  private server: Server
 
   constructor (host: string = 'localhost', port: number = 80, middlewares: Array<any> = [], app: any = express()) {
-    this._host = host
-    this._port = port
-    this._applyPlugins()
+    this.host = host
+    this.port = port
+    this.applyPlugins()
     this.app = app
-    this._useMiddlewares(middlewares)
+    this.useMiddlewares(middlewares)
   }
 
   close (): any {
-    return this._server && this._server.close()
+    return this.server && this.server.close()
   }
 
-  _applyPlugins (): void {
+  private applyPlugins (): void {
     error()
   }
 
-  _useMiddlewares (middlewares: Array<any>): void {
+  private useMiddlewares (middlewares: Array<any>): void {
     this.app.use(helmet())
     this.app.use(cookieParser())
     this.app.use(bodyParser.json())
@@ -68,7 +70,7 @@ class HttpServerHelper {
    * @returns {Promise<void>}
    */
   async listen (routePath: string = null, apiPath: string = null, origins: string | Array<string> = null): Promise<any> {
-    this._server = http.createServer(this.app)
+    this.server = http.createServer(this.app)
     origins && cors(this.app, origins)
     this.app.use((err, req, res, next) => {
       if (err) {
@@ -81,8 +83,8 @@ class HttpServerHelper {
       // 后面的错误需要自己捕捉
       await apiRouteFactory.buildRoute(this.app, routePath, apiPath)
     }
-    this._server.listen(this._port, this._host, () => {
-      global.logger.info(`应用实例 http://${this._server.address().address}:${this._server.address().port}`)
+    this.server.listen(this.port, this.host, () => {
+      global.logger.info(`应用实例 http://${(this.server.address() as AddressInfo).address}:${(this.server.address() as AddressInfo).port}`)
     })
     return this.app
   }
