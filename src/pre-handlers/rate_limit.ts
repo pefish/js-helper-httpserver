@@ -1,7 +1,5 @@
 /** @module */
 
-import ErrorHelper from '@pefish/js-error'
-
 /**
  * 接口频率限制
  * @param req
@@ -30,12 +28,12 @@ export default async (req, res, next, params) => {
     }
   })
   if (uniqueSign instanceof Object) {
-    throw new ErrorHelper('uniqueSign illegal')
+    throw new Error('uniqueSign illegal')
   }
   const key = `rateLimit-${apiConfig['path']}-${apiConfig['method']}:${uniqueSign}`
   const result = (await global[redisClientStr].string.get(key)).get()
   if (result) {
-    throw new ErrorHelper('rate limit')
+    throw new Error('rate limit')
   } else {
     await global[redisClientStr].string.setex(key, interval / 1000, '1')
   }

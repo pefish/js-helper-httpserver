@@ -2,7 +2,6 @@
 
 import RequestUtil from '../utils/request'
 import AssertUtil from '@pefish/js-util-assert'
-import ErrorHelper from '@pefish/js-error'
 
 /**
  * api参数验证
@@ -13,7 +12,7 @@ export default async (req) => {
   const apiConfig = req['apiConfig']
   const clientParams = RequestUtil.getAllParams(req)
   if (!apiConfig) {
-    throw new ErrorHelper('api route not found')
+    throw new Error('api route not found')
   }
   if (apiConfig['params']) {
     const params = apiConfig['params']
@@ -59,7 +58,7 @@ export default async (req) => {
       if (preHandlers) {
         for (const preHandler of preHandlers) {
           if (!AssertUtil.isType(preHandler, 'array', null, false)) {
-            throw new ErrorHelper(`参数的preHandlers配置有误  ${apiConfig['path']}`)
+            throw new Error(`参数的preHandlers配置有误  ${apiConfig['path']}`)
           }
           const method = preHandler[0]
           switch (method) {

@@ -8,7 +8,6 @@ import cookieParser from 'cookie-parser'
 import bodyParser from 'body-parser'
 import apiRouteFactory from './plugins/api_route_factory'
 import ResponseUtil from './utils/response'
-import ErrorHelper from '@pefish/js-error'
 import { Server } from 'http';
 import { AddressInfo } from 'net';
 
@@ -74,7 +73,7 @@ class HttpServerHelper {
     origins && cors(this.app, origins)
     this.app.use((err, req, res, next) => {
       if (err) {
-        ResponseUtil.failed(res, new ErrorHelper(err.message))
+        ResponseUtil.failed(res, err)
       } else {
         next()
       }

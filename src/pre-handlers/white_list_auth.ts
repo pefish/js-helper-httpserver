@@ -1,7 +1,5 @@
 /** @module */
 
-import ErrorHelper from '@pefish/js-error'
-
 /**
  * 白名单认证
  * @param req
@@ -27,6 +25,6 @@ export default async (req, res, next, params) => {
   })
   const whiteList = params['allow']
   if (!whiteList.includes(target)) {
-    throw new ErrorHelper('permission error')
+    throw new Error('permission error')
   }
 }

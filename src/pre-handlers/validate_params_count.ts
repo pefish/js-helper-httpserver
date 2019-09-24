@@ -1,7 +1,6 @@
 /** @module */
 
 import RequestUtil from '../utils/request'
-import ErrorHelper from '@pefish/js-error'
 
 /**
  * 验证api请求的参数个数
@@ -13,6 +12,6 @@ export default async (req) => {
   const apiConfig = req['apiConfig']
   apiConfig['params'] || (apiConfig['params'] = {})
   if (Object.keys(clientParams).length !== Object.keys(apiConfig['params']).length) {
-    throw new ErrorHelper('params num error')
+    throw new Error('params num error')
   }
 }

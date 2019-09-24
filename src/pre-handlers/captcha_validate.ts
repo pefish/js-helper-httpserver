@@ -1,5 +1,4 @@
 /** @module */
-import ErrorHelper from '@pefish/js-error'
 
 /**
  * 要求验证码通过
@@ -18,7 +17,7 @@ export default async (req, res, next, params) => {
     captchaKey = captchaKey[key]
   })
   if (captchaKey instanceof Object) {
-    throw new ErrorHelper('preHandler config error')
+    throw new Error('preHandler config error')
   }
 
   let code = req
@@ -26,13 +25,13 @@ export default async (req, res, next, params) => {
     code = code[key]
   })
   if (code instanceof Object) {
-    throw new ErrorHelper('preHandler config error')
+    throw new Error('preHandler config error')
   }
   if (global['debug'] === true && captchaKey === '123456' && code === '123456') {
     return true
   }
   const result = (await global[redisClientStr].string.get(captchaKey)).get()
   if (!result || result.toLowerCase() !== code.toLowerCase()) {
-    throw new ErrorHelper('vcode verify error')
+    throw new Error('vcode verify error')
   }
 }

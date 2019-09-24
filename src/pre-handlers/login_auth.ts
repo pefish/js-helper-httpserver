@@ -1,7 +1,5 @@
 /** @module */
 
-import ErrorHelper from '@pefish/js-error'
-
 /**
  * jwt登录验证
  * @param req
@@ -25,14 +23,14 @@ export default async (req, res, next, params) => {
   if (jwtToken) {
     const data = await JwtUtil.verifyJwt(jwtToken, jwtSecret)
     if (!data) {
-      throw new ErrorHelper('jwt payload not exist')
+      throw new Error('jwt payload not exist')
     }
     if (!data.aud) {
-      throw new ErrorHelper('jwt aud')
+      throw new Error('jwt aud')
     }
     req['jwtPayload'] = data
     global.logger.info('userId:', req['jwtPayload']['aud'])
   } else {
-    throw new ErrorHelper('jwt not exist')
+    throw new Error('jwt not exist')
   }
 }
