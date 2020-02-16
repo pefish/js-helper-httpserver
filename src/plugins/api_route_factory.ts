@@ -52,7 +52,7 @@ class ApiRouteFactory {
       this.apiConfigs[name] = apisOfName
     }
     app.all(`/healthz`, loadParams, printParams, (req, res) => {
-      global.logger.info(`I am healthy`)
+      global.logger.debug(`I am healthy`)
       res.status(200)
       res.send('ok')
     })
