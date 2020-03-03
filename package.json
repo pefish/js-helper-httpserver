@@ -1,6 +1,6 @@
 {
   "name": "@pefish/js-helper-httpserver",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "types": "./types/http_server.d.ts",
   "main": "./lib/http_server.js",
   "scripts": {
@@ -9,7 +9,7 @@
     "prepublish": "yarn build"
   },
   "dependencies": {
-    "@pefish/js-node-assist": "^0.6.11",
+    "@pefish/js-node-assist": "^0.6.15",
     "@pefish/js-util-assert": "^0.0.3",
     "@pefish/js-util-file": "^0.0.4",
     "body-parser": "^1.19.0",
