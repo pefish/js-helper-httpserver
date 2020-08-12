@@ -4,7 +4,8 @@ import path from 'path'
 type ApiResult = {
 	msg: string,
 	code: number,
-	data: any,
+  data: any,
+  internal_msg: string
 }
 
 /**
@@ -19,6 +20,7 @@ export default class ResponseUtil {
     return {
       code: 0,
       msg: ``,
+      internal_msg: ``,
       data
     }
   }
@@ -33,7 +35,8 @@ export default class ResponseUtil {
     return {
       msg: (global['debug'] === false || err.getErrorMessage_() === undefined) ? 'INTERNAL_ERROR' : err.getErrorMessage_(),
       code: errorCode,
-      data: (err instanceof Error ? err.getErrorStorage_() : null)
+      data: (err instanceof Error ? err.getErrorStorage_() : null),
+      internal_msg: (err.getErrorMessage_() === undefined) ? 'INTERNAL_ERROR' : err.getErrorMessage_(),
     }
   }
 
