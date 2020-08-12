@@ -5,7 +5,6 @@ type ApiResult = {
 	msg: string,
 	code: number,
   data: any,
-  internal_msg: string
 }
 
 /**
@@ -20,7 +19,6 @@ export default class ResponseUtil {
     return {
       code: 0,
       msg: ``,
-      internal_msg: ``,
       data
     }
   }
@@ -33,10 +31,9 @@ export default class ResponseUtil {
   static assembleFailResp (err): ApiResult {
     const errorCode = err instanceof Error ? err.getErrorCode_() : 1
     return {
-      msg: (global['debug'] === false || err.getErrorMessage_() === undefined) ? 'INTERNAL_ERROR' : err.getErrorMessage_(),
+      msg: (err.getErrorMessage_() === undefined) ? 'INTERNAL_ERROR' : err.getErrorMessage_(),
       code: errorCode,
       data: (err instanceof Error ? err.getErrorStorage_() : null),
-      internal_msg: (err.getErrorMessage_() === undefined) ? 'INTERNAL_ERROR' : err.getErrorMessage_(),
     }
   }
 
