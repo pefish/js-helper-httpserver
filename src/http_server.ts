@@ -24,10 +24,10 @@ export interface Api {
   method: string,
   path: string,
   apiHandler: string,  // controller 中的方法名
-  preHandlers: {
+  preHandlers?: {
     [handlerName: string]: string | any,
   },
-  params: {
+  params?: {
     [name: string]: {
       policies: [string, any]
     }
