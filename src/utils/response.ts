@@ -1,3 +1,4 @@
+import ErrorHelper from '@pefish/js-error'
 import fs from 'fs'
 import path from 'path'
 
@@ -28,12 +29,12 @@ export default class ResponseUtil {
     res.json(ResponseUtil.assembleFailResp(err))
   }
 
-  static assembleFailResp (err): ApiResult {
-    const errorCode = err instanceof Error ? err.getErrorCode_() : 1
+  static assembleFailResp (err: Error): ApiResult {
+    const errorCode = err instanceof ErrorHelper ? err._errorCode : 1
     return {
-      msg: (err.getErrorMessage_() === undefined) ? 'INTERNAL_ERROR' : err.getErrorMessage_(),
+      msg: err.message,
       code: errorCode,
-      data: (err instanceof Error ? err.getErrorStorage_() : null),
+      data: (err instanceof ErrorHelper ? err._errorStorage : null),
     }
   }
 

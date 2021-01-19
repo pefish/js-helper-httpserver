@@ -1,6 +1,6 @@
 {
   "name": "@pefish/js-helper-httpserver",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "types": "./types/http_server.d.ts",
   "main": "./lib/http_server.js",
   "scripts": {
@@ -9,9 +9,10 @@
     "prepublish": "yarn build"
   },
   "dependencies": {
-    "@pefish/js-node-assist": "^0.6.15",
+    "@pefish/js-error": "^0.1.2",
+    "@pefish/js-node-assist": "^2.0.8",
     "@pefish/js-util-assert": "^0.0.3",
-    "@pefish/js-util-file": "^0.0.4",
+    "@pefish/js-util-file": "^0.0.5",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.4",
     "express": "^4.17.1",
@@ -22,7 +23,7 @@
     "@types/chai": "^4.1.7",
     "@types/mocha": "^5.2.6",
     "@types/moment": "^2.13.0",
-    "@types/node": "^11.13.7",
+    "@types/node": "^14.14.21",
     "ts-node": "^8.1.0",
     "tslint": "^5.16.0",
     "typescript": "^3.4.5"

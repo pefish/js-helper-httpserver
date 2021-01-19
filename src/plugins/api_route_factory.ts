@@ -1,6 +1,7 @@
 import ResponseUtil from '../utils/response'
 import FileUtil from '@pefish/js-util-file'
 import path from 'path'
+import { Api, Controller } from '../http_server'
 
 /**
  * api工厂类
@@ -8,8 +9,15 @@ import path from 'path'
  */
 class ApiRouteFactory {
 
-  apis: object
-  apiConfigs: object
+  apis: {
+    [routeName: string]: {
+      handlerInstance: Controller,
+      apiConfig: Api,
+    }
+  }
+  apiConfigs: {
+    [name: string]: Api[],
+  }
 
   constructor () {
     this.apis = {}
@@ -32,7 +40,13 @@ class ApiRouteFactory {
       const name = path.basename(file, '.js')
       const apisOfName = require(`${routePath}/${file}`).default
       const class_ = new (require(`${apiPath}/${name}`).default)()
-      apisOfName.forEach((api) => {
+      apisOfName.forEach((api: Api) => {
+        if (!api.preHandlers) {
+          api.preHandlers = {}
+        }
+        if (!api.preHandlers["api_params_validate"]) {
+          api.preHandlers["api_params_validate"] = {}
+        }
         app[api.method](api.path,
           loadApiConfig,
           loadParams,
@@ -91,7 +105,7 @@ class ApiRouteFactory {
     return result
   }
 
-  buildBaseHandle (preHandlers = []) {
+  buildBaseHandle (preHandlers) {
     const allPreHandlers = []
     for (const [handlerName, params] of Object.entries(preHandlers)) {
       if (typeof params === 'string') {
@@ -138,7 +152,7 @@ const apiRouteFactory = new ApiRouteFactory()
 
 function loadApiConfig (req, res, next) {
   try {
-    req['apiConfig'] = apiRouteFactory.apis[req.method.toUpperCase() + '-' + req.route['path']]['apiConfig']
+    req.apiConfig = apiRouteFactory.apis[req.method.toUpperCase() + '-' + req.route.path].apiConfig
     next()
   } catch (err) {
     ResponseUtil.failed(res, err)
@@ -153,7 +167,7 @@ function loadParams (req, res, next) {
     } else {
       Object.assign(params, req.params, req.body)
     }
-    req['params'] = params
+    req.params = params
     next()
   } catch (err) {
     ResponseUtil.failed(res, err)
@@ -162,7 +176,7 @@ function loadParams (req, res, next) {
 
 function printParams (req, res, next, when_ = null) {
   try {
-    const params = Object.assign({}, req['params'])
+    const params = Object.assign({}, req.params)
     const passLists = ['password', 'login_pass', 'trade_pass', 'pwd']
     passLists.forEach((passText) => {
       params[passText] && (params[passText] = '*******')
@@ -180,8 +194,8 @@ function printParams (req, res, next, when_ = null) {
 
 async function rootHandler (req, res, next) {
   try {
-    const handlerInstance = apiRouteFactory.apis[req.method.toUpperCase() + '-' + req.route['path']]['handlerInstance']
-    const data = await handlerInstance[req['apiConfig']['apiHandler']](req, res, next)
+    const handlerInstance = apiRouteFactory.apis[req.method.toUpperCase() + '-' + req.route.path].handlerInstance
+    const data = await handlerInstance[req.apiConfig.apiHandler](req, res, next)
     if (data) {
       ResponseUtil.success(res, data)
     }

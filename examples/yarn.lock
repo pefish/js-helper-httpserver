@@ -18,55 +18,39 @@
     esutils "^2.0.2"
     js-tokens "^4.0.0"
 
-"@pefish/js-error@^0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@pefish/js-error/-/js-error-0.0.5.tgz#be50104cb7e6cb115a31ccdc55dafcf09a65a4ec"
-  integrity sha512-Eypll4OykI0EWj61wx8/cVMVldGjiPJVic/KzK76z1RZiNN9Q2TF7DJif+qg7MBlGbJHAQZ77wIBv5x9fndxpw==
+"@pefish/js-error@^0.1.2":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@pefish/js-error/-/js-error-0.1.2.tgz#89913c01f960318fa5108e79d99c27ad90b4430f"
+  integrity sha512-JFM3pW2MhGwOwdaSfUw79DsE52oh27meYzL07B/gkX7+oF0ByVs1/BuEFMBaTk5RMnMijN0lCEuCpfZgcShO3A==
 
-"@pefish/js-helper-logger@^0.0.3":
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/@pefish/js-helper-logger/-/js-helper-logger-0.0.3.tgz#f851116f99190ace2f94020a6f1ab1c3842febad"
-  integrity sha512-CjqHTshbUBbcGBCoEcjeuJEG/BXhc3JSPSiqdV4U9NZIl23INz0Aj5u+IachKmcFFYpaEGfJvE5ThNg9hyMu5A==
+"@pefish/js-helper-logger@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@pefish/js-helper-logger/-/js-helper-logger-1.0.0.tgz#8dd7ca68e371f8dc0c8ca3fb8a7e2f74b0ea1e87"
+  integrity sha512-gQ31eL4JN85ybtRQkxBEBJaKmOzjWmCMqJnwZkdcA1gJxfHIhn5bGdj7aDLAuCQQgtOWuKqcIpgCIinUATD2mw==
   dependencies:
-    "@pefish/js-error" "^0.0.5"
-    "@pefish/js-node-assist" "^0.6.0"
-    "@pefish/js-util-time" "^0.0.1"
     log4js "^2.3.12"
     moment "^2.24.0"
 
-"@pefish/js-node-assist@^0.6.0":
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/@pefish/js-node-assist/-/js-node-assist-0.6.0.tgz#3c9b377c91c1fb91ef5bf1e6023b6cfd2eb4785f"
-  integrity sha512-IczCkklwLQaUz0H+m7r4D/ITe3BV50yZ2IkLC6cXfzHw/yybqmSpMyI44FaywVxMufyhRmFnWSfryd84+ratkw==
+"@pefish/js-node-assist@^2.0.8":
+  version "2.0.8"
+  resolved "https://registry.yarnpkg.com/@pefish/js-node-assist/-/js-node-assist-2.0.8.tgz#482e598f27396a0e6f837924e634c1e1be407bac"
+  integrity sha512-DUKmtlZ7SRSptya4lkU2CgkvYewfir8bu15HseqJrbFmeBnhTMpcvA/XFLZr5IV6NxntWPlP4CrKBJOc7CgNew==
   dependencies:
-    bignumber.js "^8.1.1"
-    p-js-assert "^0.0.1"
-    p-js-error "^0.0.4"
+    bignumber.js "^9.0.1"
 
-"@pefish/js-util-config@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@pefish/js-util-config/-/js-util-config-0.0.1.tgz#67c204fa0133d06f2d1bf4f702d4369b0dd2ee8e"
-  integrity sha512-AykD4oedAdxUjIk3JCO/Ni7dJiZEQza0LeW8FdagkrWdnCTTj7NlqPrJEoPkbXLnDQm9SVl2n2Nio3EFaYDX4Q==
+"@pefish/js-util-config@^0.2.4":
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/@pefish/js-util-config/-/js-util-config-0.2.4.tgz#247a704fd7eb0ad6c02a3bc81556075e6b9c2cd2"
+  integrity sha512-owk2rbOhdk3/sMoRWVhitw1mEJurT2BQ8Su3xujJZC1mHeD7YTZ+LBwmB9FlCivkH3NYsg4X35vaod5gL1Jz8w==
   dependencies:
-    "@pefish/js-error" "^0.0.5"
-    "@pefish/js-node-assist" "^0.6.0"
+    js-yaml "^3.13.1"
 
-"@pefish/js-util-starter@^0.0.3":
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/@pefish/js-util-starter/-/js-util-starter-0.0.3.tgz#ce043731b56b7e846589ad6839f8e526e094d7b4"
-  integrity sha512-vYh5kFakJZ+2xc3LcYpa9UEW76gNm7LvCwxo5KiVBt/kPKvETfvWmMCPY7cxvpoqWhmkSK3VrkSZbG1ymr2J3w==
+"@pefish/js-util-starter@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@pefish/js-util-starter/-/js-util-starter-1.0.0.tgz#6389e72018dd3de197d44a948f875e811c3a2f23"
+  integrity sha512-LsyEEGkqZfb9KFZ2thM6HB8nK3iQqDritASOILq+L93Rbfr+cKvOPVkuntc/vXXt6o4x2UMKEaYJjU/C9kNFMg==
   dependencies:
-    "@pefish/js-error" "^0.0.5"
-    "@pefish/js-node-assist" "^0.6.0"
-
-"@pefish/js-util-time@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@pefish/js-util-time/-/js-util-time-0.0.1.tgz#534467102224e972a2ef4feba65e8d2f63edba9a"
-  integrity sha512-LLxG2RQmRSyCWhggJcuDiNEAOu3bgkNfdjmT/4LAW8pwVE26JcbBqqHKxKHLgXoGHIoR5WP5N5M2IDQ1tFpKlg==
-  dependencies:
-    js-node-assist "^0.5.8"
-    moment "^2.24.0"
-    p-js-error "^0.0.4"
+    "@pefish/js-error" "^0.1.2"
 
 "@types/chai@^4.1.7":
   version "4.1.7"
@@ -226,10 +210,10 @@ bcrypt-pbkdf@^1.0.0:
   dependencies:
     tweetnacl "^0.14.3"
 
-bignumber.js@^8.1.1:
-  version "8.1.1"
-  resolved "https://registry.yarnpkg.com/bignumber.js/-/bignumber.js-8.1.1.tgz#4b072ae5aea9c20f6730e4e5d529df1271c4d885"
-  integrity sha512-QD46ppGintwPGuL1KqmwhR0O+N2cZUg8JG/VzwI2e28sM9TqHjQB10lI4QAaMHVbLzwVLLAwEglpKPViWX+5NQ==
+bignumber.js@^9.0.1:
+  version "9.0.1"
+  resolved "https://registry.yarnpkg.com/bignumber.js/-/bignumber.js-9.0.1.tgz#8d7ba124c882bfd8e43260c67475518d0689e4e5"
+  integrity sha512-IdZR9mh6ahOBv/hYGiXyVuyCetmGJhtYkqLBpTStdhEGjegpPlUawydyaF3pbIOFynJTpllEs+NP+CS9jKFLjA==
 
 bitsyntax@~0.1.0:
   version "0.1.0"
@@ -849,15 +833,6 @@ isstream@~0.1.2:
   resolved "https://registry.yarnpkg.com/isstream/-/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
   integrity sha1-R+Y/evVa+m+S4VAOaQ64uFKcCZo=
 
-js-node-assist@^0.5.8:
-  version "0.5.8"
-  resolved "https://registry.yarnpkg.com/js-node-assist/-/js-node-assist-0.5.8.tgz#02f8a5d9d541eb4f4cc3edfc783af65e219a393d"
-  integrity sha512-zzaMQ8r3XnVFY8KvKgdXaHhRqm1rDJizdlE04Zktay58ObmiNNmUqCBSPSlABlQTiyza5wpSNIFHQLQqHrwl0g==
-  dependencies:
-    bignumber.js "^8.1.1"
-    p-js-assert "^0.0.1"
-    p-js-error "^0.0.4"
-
 js-tokens@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
@@ -867,6 +842,14 @@ js-yaml@^3.13.0:
   version "3.13.1"
   resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-3.13.1.tgz#aff151b30bfdfa8e49e05da22e7415e9dfa37847"
   integrity sha512-YfbcO7jXDdyj0DGxYVSlSeQNHbD7XPWvrVWeVUujrQEoZzWJIRrCPoyk6kL6IAjAG2IolMK4T0hNUe0HOUs5Jw==
+  dependencies:
+    argparse "^1.0.7"
+    esprima "^4.0.0"
+
+js-yaml@^3.13.1:
+  version "3.14.1"
+  resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-3.14.1.tgz#dae812fdb3825fa306609a8717383c50c36a0537"
+  integrity sha512-okMH7OXXJ7YrN9Ok3/SXrnu4iX9yOk+25nqX4imS2npuvTYDmo/QEZoqwZkYaIDk3jVvBOTOIEgEhaLOynBS9g==
   dependencies:
     argparse "^1.0.7"
     esprima "^4.0.0"
@@ -1143,19 +1126,6 @@ optionator@^0.8.1:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
     wordwrap "~1.0.0"
-
-p-js-assert@^0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/p-js-assert/-/p-js-assert-0.0.1.tgz#20e263b6b4e6dec5edef8e2bc384749e11449c69"
-  integrity sha512-vnXZYvwcgPF9fVB9F2rA/a9iEpPZe5QpIJjqYljujBEOosS9R4GVaaXFRw6CKyYa/a7DJMGmDTMjsfh+IQW+bA==
-  dependencies:
-    bignumber.js "^8.1.1"
-    p-js-error "^0.0.4"
-
-p-js-error@^0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/p-js-error/-/p-js-error-0.0.4.tgz#ae7dbba4f998576012bb818227961b7961cc9902"
-  integrity sha512-voF6p/u1QP+7UMMqZLucmnXHN5JncAvyeKjlvGVRQ9HuFhIL/RBxZ0gN0g1UXaRNdsOorWNfnNHuTGKNMN7toA==
 
 pac-proxy-agent@^3.0.0:
   version "3.0.0"

@@ -1,4 +1,3 @@
-import '@pefish/js-node-assist'
 import http from 'http'
 import express from 'express'
 import error from './plugins/error'
@@ -18,6 +17,25 @@ declare global {
       logger: any,
     }
   }
+}
+
+
+export interface Api {
+  method: string,
+  path: string,
+  apiHandler: string,  // controller 中的方法名
+  preHandlers: {
+    [handlerName: string]: string | any,
+  },
+  params: {
+    [name: string]: {
+      policies: [string, any]
+    }
+  }
+}
+
+export interface Controller {
+  // async test (req, res, next) {}
 }
 
 /**
@@ -69,23 +87,26 @@ class HttpServerHelper {
    * @returns {Promise<void>}
    */
   async listen (routePath: string = null, apiPath: string = null, origins: string | Array<string> = null): Promise<any> {
-    this.server = http.createServer(this.app)
-    origins && cors(this.app, origins)
-    this.app.use((err, req, res, next) => {
-      if (err) {
-        ResponseUtil.failed(res, err)
-      } else {
-        next()
+    return new Promise((resolve, reject) => {
+      this.server = http.createServer(this.app)
+      origins && cors(this.app, origins)
+      this.app.use((err, req, res, next) => {
+        if (err) {
+          ResponseUtil.failed(res, err)
+        } else {
+          next()
+        }
+      })
+      if (routePath && apiPath) {
+        // 后面的错误需要自己捕捉
+        apiRouteFactory.buildRoute(this.app, routePath, apiPath).catch(reject)
       }
+      this.server.listen(this.port, this.host, () => {
+        global.logger.info(`应用实例 http://${(this.server.address() as AddressInfo).address}:${(this.server.address() as AddressInfo).port}`)
+      })
+      this.server.on("error", reject)
+      this.server.on("close", reject)
     })
-    if (routePath && apiPath) {
-      // 后面的错误需要自己捕捉
-      await apiRouteFactory.buildRoute(this.app, routePath, apiPath)
-    }
-    this.server.listen(this.port, this.host, () => {
-      global.logger.info(`应用实例 http://${(this.server.address() as AddressInfo).address}:${(this.server.address() as AddressInfo).port}`)
-    })
-    return this.app
   }
 }
 

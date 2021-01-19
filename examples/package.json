@@ -8,11 +8,11 @@
     "tslint": "tslint -c tslint.json -p tsconfig.json"
   },
   "dependencies": {
-    "@pefish/js-error": "^0.0.5",
-    "@pefish/js-helper-logger": "^0.0.3",
-    "@pefish/js-node-assist": "^0.6.0",
-    "@pefish/js-util-config": "^0.0.1",
-    "@pefish/js-util-starter": "^0.0.3"
+    "@pefish/js-error": "^0.1.2",
+    "@pefish/js-helper-logger": "^1.0.0",
+    "@pefish/js-node-assist": "^2.0.8",
+    "@pefish/js-util-config": "^0.2.4",
+    "@pefish/js-util-starter": "^1.0.0"
   },
   "devDependencies": {
     "@types/chai": "^4.1.7",
