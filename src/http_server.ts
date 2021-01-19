@@ -21,6 +21,7 @@ declare global {
 
 
 export interface Api {
+  desc?: string,
   method: string,
   path: string,
   apiHandler: string,  // controller 中的方法名
@@ -28,9 +29,10 @@ export interface Api {
     [handlerName: string]: string | any,
   },
   params?: {
+    desc?: string,
     [name: string]: {
-      policies: [string, any]
-    }
+      policies: any[][]
+    } | any
   }
 }
 
